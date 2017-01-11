@@ -12,7 +12,7 @@ use Rack::Session::EncryptedCookie,
 
 get '/' do
   status 200
-  return "Great, your backend is set up. Now you can configure the Stripe example iOS apps to point here."
+  return "Marketpple"
 end
 
 post '/charge' do
