@@ -8,7 +8,7 @@ Dotenv.load
 Stripe.api_key = ENV['STRIPE_TEST_SECRET_KEY']
 
 use Rack::Session::EncryptedCookie,
-  :secret => 'replace_me_with_a_real_secret_key' # Actually use something secret here!
+  :secret => 'LJEhdIQ2awh7BOlVgpwZwecU577tSDq' # Actually use something secret here!
 
 get '/' do
   status 200
@@ -24,10 +24,10 @@ post '/charge' do
   begin
     charge = Stripe::Charge.create(
       :amount => params[:amount], # this number should be in cents
-      :currency => "usd",
+      :currency => "eur",
       :customer => @customer.id,
       :source => source,
-      :description => "Example Charge"
+      :description => "Pago Marketpple"
     )
   rescue Stripe::StripeError => e
     status 402
@@ -90,7 +90,7 @@ def authenticate!
     end
   else
     begin
-      @customer = Stripe::Customer.create(:description => "iOS SDK example customer")
+      @customer = Stripe::Customer.create(:description => "Usuario Marketpple")
     rescue Stripe::InvalidRequestError
     end
     session[:customer_id] = @customer.id
@@ -107,9 +107,9 @@ post '/charge_card' do
   begin
     charge = Stripe::Charge.create(
       :amount => params[:amount], # this number should be in cents
-      :currency => "usd",
+      :currency => "eur",
       :card => token,
-      :description => "Example Charge"
+      :description => "Pago Marketpple"
     )
   rescue Stripe::StripeError => e
     status 402
